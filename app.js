@@ -1,6 +1,7 @@
 const Jimp = require('jimp');
 const cors = require('cors');
-const multer = require('multer')
+const multer = require('multer');
+const colorHex = require('./app/utils/rgbtohex');
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
@@ -9,7 +10,8 @@ const express = require('express'),
 app.use(cors({ credentials: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: 'uploads/' });
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/app/index.html")
 });
@@ -24,16 +26,25 @@ app.post('/dominant', upload.single('image'), (req, res) => {
         dominantColor(pixelColor);
       }
     }
+    const color = {
+      red: Math.floor(r / img.total),
+      green: Math.floor(g / img.total),
+      blue: Math.floor(b / img.total)
+    }
+
     const rgb = {
-      r: Math.floor(r / img.total),
-      g: Math.floor(g / img.total),
-      b: Math.floor(b / img.total)
+      r: color.red,
+      g: color.green,
+      b: color.blue,
+      rgb: `rgb(${color.red},${color.green},${color.blue})`,
+      hex: colorHex(color)
     }
     res.json(rgb);
     //res.send(`<html><body style="background-color:rgb(${rgb.r + "," + rgb.g + "," + rgb.b})"></body></html>`)
     reset();
   });
-})
+});
+
 
 reset = () => {
   r = 0, b = 0, g = 0;

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Dominant Color</title>
 </head>
-<body>
-  <form action="/dominant" method="POST" enctype="multipart/form-data">
-    <input name="image" type="file"/>
-    <input type='submit'/>
-  </form>
+
+<body style="background-color: #3498db;">
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh">
+    <form action="/dominant" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+      <input name="image" type="file" accept="image/*"/>
+      <input type='submit' />
+    </form>
+  </div>
 </body>
+
 </html>
