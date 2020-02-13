@@ -1,7 +1,7 @@
 'use strict';
 
 const rgbToHex = (rgb) => {
-  const hex = Number(rgb).toString(16);
+  let hex = Number(rgb).toString(16);
   if (hex.length < 2) {
     hex = "0" + hex;
   }
