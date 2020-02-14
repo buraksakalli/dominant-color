@@ -1,6 +1,9 @@
 # Dominant Color
 <p>Dominant Color API is simple way to find dominant color in your images.</p>
 
+![dominantjs](https://user-images.githubusercontent.com/10114716/74526970-a34fd300-4f35-11ea-8757-9721377ff852.png)
+
+
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
 [![Build Status](https://travis-ci.com/buraksakalli/dominant-color.svg?branch=master)](https://travis-ci.com/buraksakalli/dominant-color)
 [![DeepScan grade](https://deepscan.io/api/teams/7308/projects/9555/branches/125970/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7308&pid=9555&bid=125970)
