@@ -10,14 +10,15 @@ const express = require('express'),
 app.use(cors({ credentials: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/app/index.html")
 });
 
 app.post('/dominant', upload.single('image'), (req, res) => {
-  Jimp.read(req.file.path, (err, image) => {
+  Jimp.read(req.file.buffer, (err, image) => {
     img = totalPixels(image);
     for (let x = 0; x < img.x; x++) {
       for (let y = 0; y < img.y; y++) {
